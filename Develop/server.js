@@ -21,8 +21,15 @@ app.get('/notes', (req, res) => {
 });
 
 app.get('/api/notes', (req, res) => {
-    res.status(200).json(`${req.method} request received to get note`)
-    console.log(`${req.method} request received to get note`)
+    fs.readFile('./db/db.json', 'utf8', (err, data) => {
+        if (err) {
+            console.error(err)
+        } else {
+            const notes = JSON.parse(data);
+            res.status(200).json(notes);
+            console.log(`${req.method} request received to get note`)
+        }
+    })
 })
 
 app.post('/api/notes', (req, res) => {
@@ -44,7 +51,7 @@ app.post('/api/notes', (req, res) => {
                 // Convert string into JSON object
                 const parsedNote = JSON.parse(data);
 
-                // Add a new review
+                // Add a new note
                 parsedNote.push(newNote);
 
                 // Write updated post back to the file
