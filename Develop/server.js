@@ -77,6 +77,26 @@ app.post('/api/notes', (req, res) => {
     }
 })
 
+app.delete('/api/notes/:id', (req, res) => {
+    fs.readFile('./db/db.json', 'utf8', (err, data) => {
+        if (err) {
+            console.error(err);
+            res.sendStatus(500);
+            return;
+        }
+        const notes = JSON.parse(data); // parsing data into an array of the objects
+        const filteredNotes = notes.filter(note => note.id !== req.params.id); // creates a new array of objects, but filters out the specific note of the chosen id
+        fs.writeFile('./db/db.json', JSON.stringify(filteredNotes), err => { // writes this new array into the db.json file
+            if (err) {
+                console.error(err);
+                res.sendStatus(500);
+                return;
+            }
+            res.sendStatus(200);
+        });
+    });
+});
+
 app.listen(PORT, () =>
     console.log(`App listening at http://localhost:${PORT}`)
 );
