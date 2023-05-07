@@ -1,1 +1,17 @@
-[{"title":"Incredibly good title","text":"incredibly good text","id":"54onso3klhasqi1h"},{"title":"asdas","text":"dadsdasd","id":"54onsm2glhat3vzt"},{"title":"asdweqe","text":"asd","id":"54ons4kolhaubgdj"},{"title":"new title again","text":"new note again\nsdfdaf","id":"54onsk14lhavg6v4"}]
+[
+    {
+        "title": "new title again",
+        "text": "new note again\nsdfdaf",
+        "id": "54onsk14lhavg6v4"
+    },
+    {
+        "title": "something title",
+        "text": "some note",
+        "id": "54ons134lhcsc6xv"
+    },
+    {
+        "title": "wqeqweqwe",
+        "text": "asd",
+        "id": "54ons66olhcu1mmm"
+    }
+]
