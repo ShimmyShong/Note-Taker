@@ -9,7 +9,6 @@ const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
 app.use(express.static('public'));
 
 app.get('/notes', (req, res) => {
@@ -42,7 +41,7 @@ app.post('/api/notes', (req, res) => {
         const newNote = {
             title,
             text,
-            id: uniqid()
+            id: uniqid() // this is creating a new and unique id for every different note that is saved
         }
         fs.readFile('./db/db.json', 'utf8', (err, data) => {
             if (err) {
